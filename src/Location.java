@@ -1,3 +1,4 @@
+package src;
 public class Location {
 	private Film unFilm;
 	private int nbJours;
