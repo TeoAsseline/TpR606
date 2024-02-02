@@ -20,6 +20,7 @@ public class Scenario {
 		unClient.addLocation(uneLocation);
 	}
 	@Test
+	// test location film normal d'une duree inferieure a 3 jours
 	public void test1() {
 		Scenario sc = new Scenario();
 		String attendu  = "Situation du client: un client\n"
@@ -30,6 +31,7 @@ public class Scenario {
 		assertEquals(attendu, obtenu);
 	}
 	@Test
+	// test location film normal d'une duree d'au moins 3 jours
 	public void test2() {
 		Scenario sc = new Scenario();
 		String attendu  = "Situation du client: un client\n"
@@ -40,6 +42,7 @@ public class Scenario {
 		assertEquals(attendu, obtenu);
 	}
 	@Test
+	// test location film nouveauté d'une duree inferieure à 2 jours
 	public void test3() {
 		Scenario sc = new Scenario();
 		String attendu  = "Situation du client: un client\n"
@@ -50,6 +53,7 @@ public class Scenario {
 		assertEquals(attendu, obtenu);
 	}
 	@Test
+	// test location film nouveaute d'une duree d'au moins 2 jours
 	public void test4() {
 		Scenario sc = new Scenario();
 		String attendu  = "Situation du client: un client\n"
@@ -60,6 +64,7 @@ public class Scenario {
 		assertEquals(attendu, obtenu);
 	}
 	@Test
+	// test location film enfant d'une duree inf�rieure a 4 jours
 	public void test5() {
 		Scenario sc = new Scenario();
 		String attendu  = "Situation du client: un client\n"
@@ -70,6 +75,7 @@ public class Scenario {
 		assertEquals(attendu, obtenu);
 	}
 	@Test
+	// test location film enfant d'une duree d'au moins 4 jours
 	public void test6() {
 		Scenario sc = new Scenario();
 		String attendu  = "Situation du client: un client\n"
@@ -80,6 +86,7 @@ public class Scenario {
 		assertEquals(attendu, obtenu);
 	}
 	@Test
+	// test cumul de locations
 	public void test7() {
 		Scenario sc = new Scenario();
 		Client unClient = new Client("client cumul");
