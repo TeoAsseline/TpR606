@@ -17,33 +17,11 @@ public class Location {
 	}
 	
 	double getmontant() {
-		double montant=0;
-		switch (getFilm().getCodePrix()) {
-		case Film.NORMAL:
-			montant += 2;
-			if (getNbJours() > 2) 
-				montant += (getNbJours() - 2) * 1.5;
-			break;
-		case Film.NOUVEAUTE:
-			montant += getNbJours() * 3;
-			break;
-		case Film.ENFANT:
-			montant += 1.5;
-			if (getNbJours() > 3)
-				montant += (getNbJours() - 3) * 1.5;
-			break;
-		}
-		return montant;
+		return unFilm.getmontant(this);
 	}
 
 	int getpointsfidelites() {
-		int pointsFidelites=0;
-		// ajout des points de fidelite
-		pointsFidelites++;
-		// ajout d'un bonus pour les nouveautes louees depuis au moins deux jours
-		if ((getFilm().getCodePrix() == Film.NOUVEAUTE) && getNbJours() > 1) 
-			pointsFidelites++;
-		return pointsFidelites;
+		return unFilm.getpointsfidelites(this);
 	}
 	
 }
