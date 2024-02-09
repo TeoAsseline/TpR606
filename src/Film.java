@@ -1,3 +1,4 @@
+package src;
 public class Film {
 	
 	public static final int ENFANT = 2;
