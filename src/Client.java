@@ -24,7 +24,7 @@ public class Client {
 		double totalDu = 0;
 		int pointsFidelites = 0;
 		Iterator<Location> forEach = locations.iterator();
-		String result = "Situation du client: " + getNom() + "\n";
+		String result = "<h1>Situation du client: " + getNom() + "</h1>\n<ul>";
 		
 		while (forEach.hasNext()) {
 			double du = 0;
@@ -61,13 +61,13 @@ public class Client {
 			}
 			
 			// mise en forme location
-			result += "\t" + each.getFilm().getTitre() + "\t" + String.valueOf(du) + "\n";
+			result += "<li>\t" + each.getFilm().getTitre() + "\t" + String.valueOf(du) + "</li>\n";
 			totalDu += du;
 		}
 		
 		// ajout recapitulatif client
-		result += "Total du " + String.valueOf(totalDu) + "\n";
-		result += "Vous gagnez " + String.valueOf(pointsFidelites) + " points de fidelite\n";
+		result += "</ul><h3>Total du " + String.valueOf(totalDu) + "</h3>\n";
+		result += "<h3>Vous gagnez " + String.valueOf(pointsFidelites) + " points de fidelite</h3>\n";
 		
 		return result;
 	}
