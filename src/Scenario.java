@@ -97,7 +97,28 @@ public class Scenario {
 		+ "Vous gagnez 0 points de fidelite\n";
 		String obtenu = sc.testSituation("un client","Coffret series TV",Film.COFFRETSERIESTV,3);
 		assertEquals(attendu, obtenu);
-	
+	}
+	@Test
+	// test location film cinephile d'une duree inferieure a 2 jours
+	public void testlocationfilmcinephilemoinsde2jours() {
+		Scenario sc = new Scenario();
+		String attendu  = "Situation du client: un client\n"
+		+ "\tCinephile\t2.0\n"
+		+ "Total du 2.0\n"
+		+ "Vous gagnez 3 points de fidelite\n";
+		String obtenu = sc.testSituation("un client","Cinephile",Film.CINEPHILE,1);
+		assertEquals(attendu, obtenu);
+	}
+	@Test
+	// test location film cinephile d'une duree d'au moins 2 jours
+	public void testlocationfilmcinephileplusde2jours() {
+		Scenario sc = new Scenario();
+		String attendu  = "Situation du client: un client\n"
+		+ "\tCinephile\t10.0\n"
+		+ "Total du 10.0\n"
+		+ "Vous gagnez 3 points de fidelite\n";
+		String obtenu = sc.testSituation("un client","Cinephile",Film.CINEPHILE,3);
+		assertEquals(attendu, obtenu);
 	}
 	@Test
 	// test cumul de locations
