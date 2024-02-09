@@ -29,7 +29,6 @@ public class Client {
 	}
 	
 	public String situation() {
-		double totalDu = 0;
 		int pointsFidelites = 0;
 		Iterator<Location> forEach = locations.iterator();
 		String result = "Situation du client: " + getNom() + "\n";
