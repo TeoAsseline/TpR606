@@ -9,6 +9,7 @@ public class Scenario {
 	public String testSituation(String nomClient, String nomFilm, int typeFilm, int nbJours ) {
 		Client unClient = new Client(nomClient);
 		Film unFilm = new Film(nomFilm, typeFilm);
+		unFilm.setCodePrix(typeFilm);
 		Location uneLocation = new Location(unFilm, nbJours);
 		unClient.addLocation(uneLocation);
 		return unClient.situation();
@@ -16,6 +17,7 @@ public class Scenario {
 	
 	public void testSituationCumul(Client unClient, String nomFilm, int typeFilm, int nbJours) {
 		Film unFilm = new Film(nomFilm, typeFilm);
+		unFilm.setCodePrix(typeFilm);
 		Location uneLocation = new Location(unFilm, nbJours);
 		unClient.addLocation(uneLocation);
 	}
