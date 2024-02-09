@@ -35,5 +35,15 @@ public class Location {
 		}
 		return montant;
 	}
+
+	int getpointsfidelites() {
+		int pointsFidelites=0;
+		// ajout des points de fidelite
+		pointsFidelites++;
+		// ajout d'un bonus pour les nouveautes louees depuis au moins deux jours
+		if ((getFilm().getCodePrix() == Film.NOUVEAUTE) && getNbJours() > 1) 
+			pointsFidelites++;
+		return pointsFidelites;
+	}
 	
 }

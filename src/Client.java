@@ -28,26 +28,25 @@ public class Client {
 		return total;
 	}
 	
+	public int getTotalpointsfidelites() {
+		int total=0;
+		for(Location location:this.locations) {
+			total+=location.getpointsfidelites();
+		}
+		return total;
+	}
+	
 	public String situation() {
-		int pointsFidelites = 0;
 		Iterator<Location> forEach = locations.iterator();
 		String result = "Situation du client: " + getNom() + "\n";
-		
 		while (forEach.hasNext()) {
 			Location each = (Location) forEach.next();
-			// ajout des points de fidelite
-			pointsFidelites++;
-			// ajout d'un bonus pour les nouveautes louees depuis au moins deux jours
-			if ((each.getFilm().getCodePrix() == Film.NOUVEAUTE) && each.getNbJours() > 1) 
-				pointsFidelites++;
-			
 			// mise en forme location
 			result += "\t" + each.getFilm().getTitre() + "\t" + String.valueOf(each.getmontant()) + "\n";
 		}
-		
 		// ajout recapitulatif client
 		result += "Total du " + String.valueOf(this.getTotalMontant()) + "\n";
-		result += "Vous gagnez " + String.valueOf(pointsFidelites) + " points de fidelite\n";
+		result += "Vous gagnez " + String.valueOf(this.getTotalpointsfidelites()) + " points de fidelite\n";
 		
 		return result;
 	}
