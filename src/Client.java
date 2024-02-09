@@ -36,22 +36,24 @@ public class Client {
 				du += 2;
 				if (each.getNbJours() > 2) 
 					du += (each.getNbJours() - 2) * 1.5;
+				pointsFidelites++;
 				break;
 			case Film.NOUVEAUTE:
 				du += each.getNbJours() * 3;
+				pointsFidelites++;
+				if (each.getNbJours() > 1)
+					pointsFidelites++;
 				break;
 			case Film.ENFANT:
 				du += 1.5;
 				if (each.getNbJours() > 3)
 					du += (each.getNbJours() - 3) * 1.5;
+				pointsFidelites++;
+				break;
+			case Film.COFFRETSERIESTV:
+				du += each.getNbJours() * 0.5;
 				break;
 			}
-			
-			// ajout des points de fidelite
-			pointsFidelites++;
-			// ajout d'un bonus pour les nouveautes louees depuis au moins deux jours
-			if ((each.getFilm().getCodePrix() == Film.NOUVEAUTE) && each.getNbJours() > 1) 
-				pointsFidelites++;
 			
 			// mise en forme location
 			result += "\t" + each.getFilm().getTitre() + "\t" + String.valueOf(du) + "\n";

@@ -1,6 +1,7 @@
 package src;
 public class Film {
 	
+	public static final int COFFRETSERIESTV = 3;
 	public static final int ENFANT = 2;
 	public static final int NOUVEAUTE = 1;
 	public static final int NORMAL = 0;
