@@ -53,6 +53,11 @@ public class Client {
 			case Film.COFFRETSERIESTV:
 				du += each.getNbJours() * 0.5;
 				break;
+			case Film.CINEPHILE:
+				du += 2;
+				if (each.getNbJours() > 1)
+					du += (each.getNbJours() - 1) * 4;
+				pointsFidelites += 3;
 			}
 			
 			// mise en forme location
