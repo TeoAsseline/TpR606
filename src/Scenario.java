@@ -88,6 +88,18 @@ public class Scenario {
 		assertEquals(attendu, obtenu);
 	}
 	@Test
+	// test location film coffretseriestv
+	public void testlocationfilmcoffretseriestv(){
+		Scenario sc = new Scenario();
+		String attendu  = "Situation du client: un client\n"
+		+ "\tCoffret series TV\t1.5\n"
+		+ "Total du 1.5\n"
+		+ "Vous gagnez 0 points de fidelite\n";
+		String obtenu = sc.testSituation("un client","Coffret series TV",Film.COFFRETSERIESTV,3);
+		assertEquals(attendu, obtenu);
+	
+	}
+	@Test
 	// test cumul de locations
 	public void testcumullocations() {
 		Scenario sc = new Scenario();
