@@ -20,6 +20,14 @@ public class Client {
 		return this.nom;
 	}
 	
+	public double getTotalMontant() {
+		double total=0;
+		for(Location location:this.locations) {
+			total+=location.getmontant();
+		}
+		return total;
+	}
+	
 	public String situation() {
 		double totalDu = 0;
 		int pointsFidelites = 0;
@@ -27,26 +35,7 @@ public class Client {
 		String result = "Situation du client: " + getNom() + "\n";
 		
 		while (forEach.hasNext()) {
-			double du = 0;
 			Location each = (Location) forEach.next();
-			
-			//determine le montant de chaque location
-			switch (each.getFilm().getCodePrix()) {
-			case Film.NORMAL:
-				du += 2;
-				if (each.getNbJours() > 2) 
-					du += (each.getNbJours() - 2) * 1.5;
-				break;
-			case Film.NOUVEAUTE:
-				du += each.getNbJours() * 3;
-				break;
-			case Film.ENFANT:
-				du += 1.5;
-				if (each.getNbJours() > 3)
-					du += (each.getNbJours() - 3) * 1.5;
-				break;
-			}
-			
 			// ajout des points de fidelite
 			pointsFidelites++;
 			// ajout d'un bonus pour les nouveautes louees depuis au moins deux jours
@@ -54,12 +43,11 @@ public class Client {
 				pointsFidelites++;
 			
 			// mise en forme location
-			result += "\t" + each.getFilm().getTitre() + "\t" + String.valueOf(du) + "\n";
-			totalDu += du;
+			result += "\t" + each.getFilm().getTitre() + "\t" + String.valueOf(each.getmontant()) + "\n";
 		}
 		
 		// ajout recapitulatif client
-		result += "Total du " + String.valueOf(totalDu) + "\n";
+		result += "Total du " + String.valueOf(this.getTotalMontant()) + "\n";
 		result += "Vous gagnez " + String.valueOf(pointsFidelites) + " points de fidelite\n";
 		
 		return result;
