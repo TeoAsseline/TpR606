@@ -1,8 +1,9 @@
-public class Location {
-	private Film unFilm;
+package src;
+public class LocationPART2 {
+	private FilmPART2 unFilm;
 	private int nbJours;
 	
-	public Location(Film unFilm, int nbJours) {
+	public LocationPART2(FilmPART2 unFilm, int nbJours) {
 		this.unFilm = unFilm;
 		this.nbJours = nbJours;
 	}
@@ -11,7 +12,7 @@ public class Location {
 		return this.nbJours;
 	}
 
-	public Film getFilm() {
+	public FilmPART2 getFilm() {
 		return this.unFilm;
 	}
 	

@@ -1,5 +1,8 @@
-public class Film {
+package src;
+public class FilmPART2 {
 	
+	public static final int CINEPHILE = 4;
+	public static final int COFFRETSERIESTV = 3;
 	public static final int ENFANT = 2;
 	public static final int NOUVEAUTE = 1;
 	public static final int NORMAL = 0;
@@ -7,7 +10,7 @@ public class Film {
 	private String titre;
 	private int codePrix;
 	
-	public Film(String titre, int codePrix) {
+	public FilmPART2(String titre, int codePrix) {
 		this.titre = titre;
 		this.codePrix = codePrix;
 	}

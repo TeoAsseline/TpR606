@@ -1,4 +1,3 @@
-package src;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,7 +23,7 @@ public class Client {
 		double totalDu = 0;
 		int pointsFidelites = 0;
 		Iterator<Location> forEach = locations.iterator();
-		String result = "<h1>Situation du client: " + getNom() + "</h1>\n<ul>";
+		String result = "Situation du client: " + getNom() + "\n";
 		
 		while (forEach.hasNext()) {
 			double du = 0;
@@ -36,38 +35,31 @@ public class Client {
 				du += 2;
 				if (each.getNbJours() > 2) 
 					du += (each.getNbJours() - 2) * 1.5;
-				pointsFidelites++;
 				break;
 			case Film.NOUVEAUTE:
 				du += each.getNbJours() * 3;
-				pointsFidelites++;
-				if (each.getNbJours() > 1)
-					pointsFidelites++;
 				break;
 			case Film.ENFANT:
 				du += 1.5;
 				if (each.getNbJours() > 3)
 					du += (each.getNbJours() - 3) * 1.5;
-				pointsFidelites++;
 				break;
-			case Film.COFFRETSERIESTV:
-				du += each.getNbJours() * 0.5;
-				break;
-			case Film.CINEPHILE:
-				du += 2;
-				if (each.getNbJours() > 1)
-					du += (each.getNbJours() - 1) * 4;
-				pointsFidelites += 3;
 			}
 			
+			// ajout des points de fidelite
+			pointsFidelites++;
+			// ajout d'un bonus pour les nouveautes louees depuis au moins deux jours
+			if ((each.getFilm().getCodePrix() == Film.NOUVEAUTE) && each.getNbJours() > 1) 
+				pointsFidelites++;
+			
 			// mise en forme location
-			result += "<li>\t" + each.getFilm().getTitre() + "\t" + String.valueOf(du) + "</li>\n";
+			result += "\t" + each.getFilm().getTitre() + "\t" + String.valueOf(du) + "\n";
 			totalDu += du;
 		}
 		
 		// ajout recapitulatif client
-		result += "</ul><h3>Total du " + String.valueOf(totalDu) + "</h3>\n";
-		result += "<h3>Vous gagnez " + String.valueOf(pointsFidelites) + " points de fidelite</h3>\n";
+		result += "Total du " + String.valueOf(totalDu) + "\n";
+		result += "Vous gagnez " + String.valueOf(pointsFidelites) + " points de fidelite\n";
 		
 		return result;
 	}
