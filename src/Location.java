@@ -17,11 +17,11 @@ public class Location {
 	}
 	
 	double getmontant() {
-		return unFilm.getmontant(this);
+		return unFilm.getPrix().getMontant(this.nbJours);
 	}
 
 	int getpointsfidelites() {
-		return unFilm.getpointsfidelites(this);
+		return unFilm.getpointsfidelites(this.nbJours);
 	}
 	
 }

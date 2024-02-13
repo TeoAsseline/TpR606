@@ -6,18 +6,18 @@ import org.junit.jupiter.api.Test;
 
 public class Scenario {
 	
-	public String testSituation(String nomClient, String nomFilm, int typeFilm, int nbJours ) {
+	public String testSituation(String nomClient, String nomFilm, int codePrix, int nbJours ) {
 		Client unClient = new Client(nomClient);
-		Film unFilm = new Film(nomFilm, typeFilm);
-		unFilm.setCodePrix(typeFilm);
+		Prix TypePrix = Prix.setCodePrix(codePrix);
+		Film unFilm = new Film(nomFilm, TypePrix);
 		Location uneLocation = new Location(unFilm, nbJours);
 		unClient.addLocation(uneLocation);
 		return unClient.situation();
 	}
 	
-	public void testSituationCumul(Client unClient, String nomFilm, int typeFilm, int nbJours) {
-		Film unFilm = new Film(nomFilm, typeFilm);
-		unFilm.setCodePrix(typeFilm);
+	public void testSituationCumul(Client unClient, String nomFilm, int codePrix, int nbJours) {
+		Prix typePrix = Prix.setCodePrix(codePrix);
+		Film unFilm = new Film(nomFilm, typePrix);
 		Location uneLocation = new Location(unFilm, nbJours);
 		unClient.addLocation(uneLocation);
 	}
@@ -29,7 +29,7 @@ public class Scenario {
 						+ "\tTaxi Driver\t2.0\n"
 						+ "Total du 2.0\n"
 						+ "Vous gagnez 1 points de fidelite\n";
-		String obtenu = sc.testSituation("un client","Taxi Driver",Film.NORMAL,2);
+		String obtenu = sc.testSituation("un client","Taxi Driver",Prix.NORMAL,2);
 		assertEquals(attendu, obtenu);
 	}
 	@Test
@@ -40,7 +40,7 @@ public class Scenario {
 			+ "\tTaxi Driver\t3.5\n"
 			+ "Total du 3.5\n"
 			+ "Vous gagnez 1 points de fidelite\n";
-		String obtenu = sc.testSituation("un client","Taxi Driver",Film.NORMAL,3);
+		String obtenu = sc.testSituation("un client","Taxi Driver",Prix.NORMAL,3);
 		assertEquals(attendu, obtenu);
 	}
 	@Test
@@ -51,7 +51,7 @@ public class Scenario {
 		+ "\t11 heures 14\t3.0\n"
 		+ "Total du 3.0\n"
 		+ "Vous gagnez 1 points de fidelite\n";
-		String obtenu = sc.testSituation("un client","11 heures 14",Film.NOUVEAUTE,1);
+		String obtenu = sc.testSituation("un client","11 heures 14",Prix.NOUVEAUTE,1);
 		assertEquals(attendu, obtenu);
 	}
 	@Test
@@ -62,7 +62,7 @@ public class Scenario {
 		+ "\t11 heures 14\t12.0\n"
 		+ "Total du 12.0\n"
 		+ "Vous gagnez 2 points de fidelite\n";
-		String obtenu = sc.testSituation("un client","11 heures 14",Film.NOUVEAUTE,4);
+		String obtenu = sc.testSituation("un client","11 heures 14",Prix.NOUVEAUTE,4);
 		assertEquals(attendu, obtenu);
 	}
 	@Test
@@ -73,7 +73,7 @@ public class Scenario {
 		+ "\tCendrillon\t1.5\n"
 		+ "Total du 1.5\n"
 		+ "Vous gagnez 1 points de fidelite\n";
-		String obtenu = sc.testSituation("un client","Cendrillon",Film.ENFANT,3);
+		String obtenu = sc.testSituation("un client","Cendrillon",Prix.ENFANT,3);
 		assertEquals(attendu, obtenu);
 	}
 	@Test
@@ -84,7 +84,7 @@ public class Scenario {
 		+ "\tCendrillon\t3.0\n"
 		+ "Total du 3.0\n"
 		+ "Vous gagnez 1 points de fidelite\n";
-		String obtenu = sc.testSituation("un client","Cendrillon",Film.ENFANT,4);
+		String obtenu = sc.testSituation("un client","Cendrillon",Prix.ENFANT,4);
 		assertEquals(attendu, obtenu);
 	}
 	@Test
@@ -92,9 +92,9 @@ public class Scenario {
 	public void testcumullocations() {
 		Scenario sc = new Scenario();
 		Client unClient = new Client("client cumul");
-		sc.testSituationCumul(unClient,"Taxi Driver",Film.NORMAL,2);
-		sc.testSituationCumul(unClient,"11 heures 14",Film.NOUVEAUTE,1);
-		sc.testSituationCumul(unClient,"Cendrillon",Film.ENFANT,2);
+		sc.testSituationCumul(unClient,"Taxi Driver",Prix.NORMAL,2);
+		sc.testSituationCumul(unClient,"11 heures 14",Prix.NOUVEAUTE,1);
+		sc.testSituationCumul(unClient,"Cendrillon",Prix.ENFANT,2);
 		String attendu = "Situation du client: client cumul\n"
 			+ "\tTaxi Driver\t2.0\n"
 			+ "\t11 heures 14\t3.0\n"
