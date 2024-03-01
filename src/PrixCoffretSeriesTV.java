@@ -1,23 +1,20 @@
 package src;
 
-public class PrixEnfant extends Prix{
+public class PrixCoffretSeriesTV extends Prix{
 
 	@Override
 	public int getType() {
-		return ENFANT;
+		return COFFRETSERIESTV;
 	}
 
 	@Override
 	public double getMontant(int nbJours) {
-		double montant = 1.5;
-		if (nbJours > 3) {
-			montant += (nbJours - 3) * 1.5;
-		}
+		double montant = 0.5*nbJours;
 		return montant;
 	}
 
 	@Override
 	public int getPointsFidelites(int nbJours) {
-		return 1;
+		return 0;
 	}
 }

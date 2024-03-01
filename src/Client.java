@@ -1,6 +1,5 @@
 package src;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,6 +18,10 @@ public class Client {
 	public String getNom() {
 		return this.nom;
 	}
+
+	public List<Location> getLocations() {
+		return locations;
+	}
 	
 	public double getTotalMontant() {
 		double total=0;
@@ -28,27 +31,11 @@ public class Client {
 		return total;
 	}
 	
-	public int getTotalpointsfidelites() {
+	public int getTotalPointsFidelites() {
 		int total=0;
 		for(Location location:this.locations) {
 			total+=location.getpointsfidelites();
 		}
 		return total;
 	}
-	
-	public String situation() {
-		Iterator<Location> forEach = locations.iterator();
-		String result = "Situation du client: " + getNom() + "\n";
-		while (forEach.hasNext()) {
-			Location each = (Location) forEach.next();
-			// mise en forme location
-			result += "\t" + each.getFilm().getTitre() + "\t" + String.valueOf(each.getmontant()) + "\n";
-		}
-		// ajout recapitulatif client
-		result += "Total du " + String.valueOf(this.getTotalMontant()) + "\n";
-		result += "Vous gagnez " + String.valueOf(this.getTotalpointsfidelites()) + " points de fidelite\n";
-		
-		return result;
-	}
-
 }
